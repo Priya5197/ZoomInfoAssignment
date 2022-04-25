@@ -1,0 +1,277 @@
+{
+  "info": {
+    "_postman_id": "28e1097b-ff4a-4916-83f2-557d24397044",
+    "name": "ZOOMINFO",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Login_Insentstaging_Negative",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "87dabb72-a365-4ba3-9ac1-d7c03424aaf9",
+            "exec": [
+              "pm.test(\"Status code validation: Failed POST request\", function () {\r",
+              "    pm.expect(pm.response.code).to.be.oneOf([403,400]);\r",
+              "});\r",
+              "\r",
+              "\r",
+              "pm.test(\"ErrorMessage Validation: Your email address or password is incorrect\",()=>{\r",
+              "const response =pm.response.json();\r",
+              "console.log(response[\"errorMsg\"]);\r",
+              "pm.expect(response.errorMsg).to.oneOf([\"Your account has been locked due to 5 consecutive unsuccessful login attempts. Please contact your administrator to restore access.\",\"Your email address or password is incorrect. Please try again.\",\"Your email address or password is incorrect. You have 1 attempt remaining\",\"Your email address or password is incorrect. You have 2 attempts remaining\",\"Your email address or password is incorrect. You have 3 attempts remaining\",\"Your email address or password is incorrect. You have 4 attempts remaining\"]); \r",
+              "});\r",
+              "\r",
+              "pm.test(\"Error Validation: Expected error value is 1\",()=>{\r",
+              "const response =pm.response.json();\r",
+              "console.log(response[\"error\"]);\r",
+              "pm.expect(response.error).to.eql(1);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"success Validation: Expected success value is false\",()=>{\r",
+              "const response =pm.response.json();\r",
+              "console.log(response[\"success\"]);\r",
+              "pm.expect(response.success).to.eql(false);\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "ff051956-e3fa-49ed-a97d-5fd38296612c",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\": \"test112@test.com\",\r\n    \"password\": \"95453465@123\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "{{BaseURL}}/app/login"
+      },
+      "response": []
+    },
+    {
+      "name": "Login_Insentstaging_Positive",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "87dabb72-a365-4ba3-9ac1-d7c03424aaf9",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "const response=pm.response.json();\r",
+              "console.log(response.token);\r",
+              "pm.globals.set(\"tokenId\", response.token);\r",
+              "\r",
+              "\r",
+              "\r",
+              "\r",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "0a03b545-98bf-40f3-b67f-e3d7f2d482be",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\": \"test@test.com\",\r\n    \"password\": \"Zxcqwe@123\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "{{BaseURL}}/app/login"
+      },
+      "response": []
+    },
+    {
+      "name": "Get_login info_GET details",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "7a66ad15-094e-41fa-b0ca-e76ea753dda8",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "pm.test(\"Name Validation: Success\",()=>{\r",
+              "const response =pm.response.json();\r",
+              "console.log(response.details.name);\r",
+              "pm.expect(response.details.name).to.eql(\"nirdosh chauhan\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Phone Number Validation: Success\",()=>{\r",
+              "const response =pm.response.json();\r",
+              "console.log(response.details.phone);\r",
+              "pm.expect(response.details.phone).to.eql(\"9898163198\");\r",
+              "});\r",
+              "\r",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "28c572a6-de04-40a9-a322-ad8e550ed4d7",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": {
+            "token": "{{tokenId}}"
+          }
+        },
+        "method": "GET",
+        "header": [],
+        "url": "{{BaseURL}}/app/user/details"
+      },
+      "response": []
+    },
+    {
+      "name": "UpdatePhoneNumber_POST_details",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "4d8ff6ef-646a-4058-b666-50b722c4b66e",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "b5881073-1728-41f1-8035-7ef7c77aec94",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": {
+            "token": "{{tokenId}}"
+          }
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"phone\": \"9898163198\",\r\n    \"linkedinUrl\": \"\",\r\n    \"calenderLink\": \"\",\r\n    \"name\":\"nirdosh chauhan\",\r\n    \"title\":\"First do it, then do it right, then do it better.“ (Addy Osmani)\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "{{BaseURL}}/app/user/details"
+      },
+      "response": []
+    },
+    {
+      "name": "VerifyUpdatedPhoneNumber_GET_details",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "a66c91c1-74fd-4814-a1d5-b41c01569f6d",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Updated Phone Number Validation: Success\",()=>{\r",
+              "const response =pm.response.json();\r",
+              "console.log(response.details.phone);\r",
+              "pm.expect(response.details.phone).to.eql(\"9898163198\");\r",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "37bef3b8-2539-4fbc-acdc-91d15b3a4a22",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": {
+            "token": "{{tokenId}}"
+          }
+        },
+        "method": "GET",
+        "header": [],
+        "url": "{{BaseURL}}/app/user/details"
+      },
+      "response": []
+    },
+    {
+      "name": "Logout_InsentstagingSession_POST",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "690c48a5-8da8-47ca-9927-f59c19ef6174",
+            "exec": [
+              "pm.test(\"Logout: Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "4b7e6a71-7605-4073-833e-197476328fe6",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": {
+            "token": "{{tokenId}}"
+          }
+        },
+        "method": "POST",
+        "header": [],
+        "url": "{{BaseURL}}/app/logout"
+      },
+      "response": []
+    }
+  ]
+}
