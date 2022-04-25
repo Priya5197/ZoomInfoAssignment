@@ -1,0 +1,240 @@
+{
+	"id": "06040fd5-53b2-4ed8-b582-b9c6ed90dbb3",
+	"name": "ZOOMINFO",
+	"timestamp": "2022-04-24T10:19:33.580Z",
+	"collection_id": "20653386-28e1097b-ff4a-4916-83f2-557d24397044",
+	"folder_id": 0,
+	"environment_id": "20653386-3a606afd-efac-4065-a9f3-cf0a3cd8e6b8",
+	"totalPass": 12,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "ff051956-e3fa-49ed-a97d-5fd38296612c",
+			"name": "Login_Insentstaging_Negative",
+			"url": "https://insentstaging.api.insent.ai/app/login",
+			"time": 706,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code validation: Failed POST request": true,
+				"ErrorMessage Validation: Your email address or password is incorrect": true,
+				"Error Validation: Expected error value is 1": true,
+				"success Validation: Expected success value is false": true
+			},
+			"testPassFailCounts": {
+				"Status code validation: Failed POST request": {
+					"pass": 1,
+					"fail": 0
+				},
+				"ErrorMessage Validation: Your email address or password is incorrect": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Error Validation: Expected error value is 1": {
+					"pass": 1,
+					"fail": 0
+				},
+				"success Validation: Expected success value is false": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				706
+			],
+			"allTests": [
+				{
+					"Status code validation: Failed POST request": true,
+					"ErrorMessage Validation: Your email address or password is incorrect": true,
+					"Error Validation: Expected error value is 1": true,
+					"success Validation: Expected success value is false": true
+				}
+			]
+		},
+		{
+			"id": "0a03b545-98bf-40f3-b67f-e3d7f2d482be",
+			"name": "Login_Insentstaging_Positive",
+			"url": "https://insentstaging.api.insent.ai/app/login",
+			"time": 942,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				942
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "28c572a6-de04-40a9-a322-ad8e550ed4d7",
+			"name": "Get_login info_GET details",
+			"url": "https://insentstaging.api.insent.ai/app/user/details",
+			"time": 944,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Name Validation: Success": true,
+				"Phone Number Validation: Success": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Name Validation: Success": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Phone Number Validation: Success": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				944
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Name Validation: Success": true,
+					"Phone Number Validation: Success": true
+				}
+			]
+		},
+		{
+			"id": "b5881073-1728-41f1-8035-7ef7c77aec94",
+			"name": "UpdatePhoneNumber_POST_details",
+			"url": "https://insentstaging.api.insent.ai/app/user/details",
+			"time": 292,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				292
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "37bef3b8-2539-4fbc-acdc-91d15b3a4a22",
+			"name": "VerifyUpdatedPhoneNumber_GET_details",
+			"url": "https://insentstaging.api.insent.ai/app/user/details",
+			"time": 1059,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Updated Phone Number Validation: Success": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Updated Phone Number Validation: Success": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				1059
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Updated Phone Number Validation: Success": true
+				}
+			]
+		},
+		{
+			"id": "4b7e6a71-7605-4073-833e-197476328fe6",
+			"name": "Logout_InsentstagingSession_POST",
+			"url": "https://insentstaging.api.insent.ai/app/logout",
+			"time": 644,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Logout: Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Logout: Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				644
+			],
+			"allTests": [
+				{
+					"Logout: Status code is 200": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 4587,
+	"collection": {
+		"requests": [
+			{
+				"id": "ff051956-e3fa-49ed-a97d-5fd38296612c",
+				"method": "POST"
+			},
+			{
+				"id": "0a03b545-98bf-40f3-b67f-e3d7f2d482be",
+				"method": "POST"
+			},
+			{
+				"id": "28c572a6-de04-40a9-a322-ad8e550ed4d7",
+				"method": "GET"
+			},
+			{
+				"id": "b5881073-1728-41f1-8035-7ef7c77aec94",
+				"method": "POST"
+			},
+			{
+				"id": "37bef3b8-2539-4fbc-acdc-91d15b3a4a22",
+				"method": "GET"
+			},
+			{
+				"id": "4b7e6a71-7605-4073-833e-197476328fe6",
+				"method": "POST"
+			}
+		]
+	}
+}
